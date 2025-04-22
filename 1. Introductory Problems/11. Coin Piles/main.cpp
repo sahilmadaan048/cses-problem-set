@@ -39,7 +39,7 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 void solve(){
     int a, b; cin >> a >> b;
     //check of i can empty the two piles
-    if((a + b)%3 == 0 and min(a, b) * 2 >- max(a, b)) {
+    if((a + b)%3 == 0 and min(a, b) * 2 >= max(a, b)) {
         cout << "YES\n";
     } else {
         cout << "NO\n";

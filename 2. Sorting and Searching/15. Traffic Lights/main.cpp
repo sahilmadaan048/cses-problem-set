@@ -9,10 +9,9 @@ void solve() {
     int x, n;
     cin >> x >> n;
     
-    set<int> positions;          // to maintain traffic light positions
-    multiset<int> segments;      // to maintain segment lengths
+    set<int> positions;          
+    multiset<int> segments;     
 
-    // Initially, full segment [0, x]
     positions.insert(0);
     positions.insert(x);
     segments.insert(x);

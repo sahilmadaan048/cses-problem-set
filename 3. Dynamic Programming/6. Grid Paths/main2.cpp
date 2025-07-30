@@ -48,7 +48,7 @@ int calWays(int row, int col, int n, vector<string>& grid, vector<vector<int>>& 
 
 void solve() {
     int n;
-    cin >> n;
+    cin >> n;`
     vector<string> grid(n);
     for (int i = 0; i < n; i++) cin >> grid[i];
 

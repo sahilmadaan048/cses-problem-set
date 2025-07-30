@@ -34,7 +34,7 @@ using namespace std;
 
 void solve() {
     int n;
-    cin >> n;
+    cin >> n; 
     vector<int> dp(n + 1, 0);
     
     dp[0] = 1;

@@ -1,0 +1,118 @@
+### What does that mean?
+
+* You start from some mountain $a$.
+* You can only move to a mountain $b$ if $h_a > h_b$ and *all* mountains between $a$ and $b$ are also shorter than $h_a$.
+
+This basically means the route forms a **strictly decreasing sequence of heights**, but with an additional constraint that the jump from one mountain to the next doesn’t "skip" any taller mountain in between.
+
+---
+
+### How to interpret the problem:
+
+**The problem is equivalent to finding the longest chain of mountains where each next mountain is to the right and has a strictly smaller height than the previous mountain in the chain, and the chain is continuous in terms of heights being strictly decreasing from the perspective of the starting mountain.**
+
+This boils down to:
+
+* Finding the **longest decreasing subsequence** (LDS) of the mountains *from left to right*.
+* But with the added condition that you can only jump from mountain $a$ to mountain $b$ if all mountains between $a$ and $b$ are shorter than mountain $a$.
+
+---
+
+### How to solve it:
+
+This is **not a standard longest decreasing subsequence** problem, because of the extra constraint.
+
+However, note that:
+
+* Because you can only glide over mountains that are *shorter* than the starting mountain, the jumps can only be to mountains that form a decreasing sequence.
+* This ensures the route is a chain of mountains where each is shorter than the previous and no taller mountain blocks the way.
+
+So **the problem can be solved by finding the length of the longest strictly decreasing subsequence** where you only consider moves to the right.
+
+---
+
+### Approach (O(n^2) naive):
+
+* For each mountain $i$, check all mountains $j > i$.
+* If $h_i > h_j$ and $h_i$ is taller than all mountains between $i$ and $j$ (which it will be if $h_i > h_k$ for all $k$ in $i < k < j$),
+* Then $dp[j] = \max(dp[j], dp[i] + 1)$.
+
+But this is $O(n^2)$, too slow for $n = 2 \times 10^5$.
+
+---
+
+### Efficient approach (using stack or data structures):
+
+The problem can be reframed as finding the **longest path in a directed graph** where edges go from a mountain to any strictly smaller mountain to the right, with no taller mountain in between.
+
+Due to the "no taller mountain in between" condition, the problem essentially corresponds to a **longest decreasing subsequence on heights when considering consecutive mountains** (you can only move to the immediate next smaller mountain that forms a decreasing chain).
+
+This is exactly the **Longest Decreasing Subsequence (LDS)** problem **on the sequence**.
+
+---
+
+### Efficient LDS solution (O(n log n)):
+
+You can use a classic **LDS with binary search** approach:
+
+* Traverse the mountains from left to right.
+* Maintain a list `tails` that stores the smallest possible tail for decreasing subsequences of various lengths.
+* For each height $h_i$, find where it fits in the `tails` array using binary search, and update accordingly.
+
+---
+
+### Summary:
+
+**Yes, you want to find the length of the Longest Decreasing Subsequence (LDS) of mountain heights.**
+
+---
+
+### Code for LDS (O(n log n)):
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int longestDecreasingSubsequence(const vector<int>& h) {
+    vector<int> tails; // stores smallest tail of all decreasing subsequences by length
+
+    for (int x : h) {
+        // We want strictly decreasing, so we do binary search to find
+        // the position to replace in tails for x.
+        // Since tails stores decreasing sequences, we invert comparison.
+
+        auto it = upper_bound(tails.begin(), tails.end(), x, greater<int>());
+        if (it == tails.end()) {
+            tails.push_back(x);
+        } else {
+            *it = x;
+        }
+    }
+    return (int)tails.size();
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n; cin >> n;
+    vector<int> h(n);
+    for (int &x : h) cin >> x;
+
+    cout << longestDecreasingSubsequence(h) << "\n";
+    return 0;
+}
+```
+
+---
+
+### Explanation of binary search:
+
+* `tails` keeps track of the **minimum ending number** of decreasing subsequences of various lengths.
+* For a new height `x`, find the position in `tails` where you can place `x` such that the subsequence remains strictly decreasing.
+* `upper_bound` with `greater<int>()` comparator finds the first element less than or equal to `x` in `tails` (since `tails` is decreasing).
+* If no such element, append `x`.
+* Else, replace that element to maintain minimal tail values.
+
+---
+

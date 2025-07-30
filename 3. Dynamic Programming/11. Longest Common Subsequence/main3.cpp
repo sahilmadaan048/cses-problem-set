@@ -30,7 +30,8 @@ void solve() {
 
     // Reconstruct one LCS from the dp table
     vector<int> lcs_sequence;
-    int i = n, j = m;
+    int i = n, j = m;4
+    
     while (i > 0 && j > 0) {
         if (a[i - 1] == b[j - 1]) {
             lcs_sequence.push_back(a[i - 1]);

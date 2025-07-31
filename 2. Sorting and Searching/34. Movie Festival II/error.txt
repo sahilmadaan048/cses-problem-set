@@ -1,0 +1,20 @@
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp: In function 'void solve()':
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:15: error: expected unqualified-id before '[' token
+     for (auto [end, start] : movies) {
+               ^
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:15: error: expected ';' before '[' token
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:16: error: capture by copy of incomplete type '<unresolved overloaded function type>'
+     for (auto [end, start] : movies) {
+                ^~~
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:21: error: 'start' was not declared in this scope
+     for (auto [end, start] : movies) {
+                     ^~~~~
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp: In lambda function:
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:28: error: expected '{' before ':' token
+     for (auto [end, start] : movies) {
+                            ^
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp: In function 'void solve()':
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:28: error: expected ';' before ':' token
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:28: error: expected primary-expression before ':' token
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:28: error: expected ')' before ':' token
+D:\Code_Everyday\CSES ProblemSet\cses-problem-set\2. Sorting and Searching\34. Movie Festival II\main.cpp:57:28: error: expected primary-expression before ':' token

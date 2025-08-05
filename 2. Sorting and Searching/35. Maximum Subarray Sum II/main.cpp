@@ -20,8 +20,9 @@
 #define mne(v)  *min_element(v.begin(),v.end())     // find min element in vector
 #define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())));
 // make sure to sort before applying unique // else only consecutive duplicates would be removed 
-#define bin(x,y)  bitset<y>(x) 
-using namespace std;
+#ifndef SYMBOL
+#define SYMBOL value
+#endifusing namespace std;
 int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
 

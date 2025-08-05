@@ -51,7 +51,7 @@ void solve(){
     multiset<int> end_times;
     for (int i = 0; i < k; ++i) {
         end_times.insert(0);
-    }
+    } 
 
     int count = 0;
     for (auto [end, start] : movies) {

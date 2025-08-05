@@ -8,7 +8,6 @@ void solve() {
     int n;
     cin >> n;
 
-    // Store arrival, departure, original index
     vector<tuple<int, int, int>> customers;
 
     for (int i = 0; i < n; ++i) {
@@ -17,10 +16,8 @@ void solve() {
         customers.push_back(make_tuple(a, b, i));
     }
 
-    // Sort by arrival time
     sort(customers.begin(), customers.end());
 
-    // Min-heap: {end_time, room_no}
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
     vector<int> assigned(n);

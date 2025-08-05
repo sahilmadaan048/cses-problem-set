@@ -25,7 +25,7 @@ typedef long double lld;
 // typedef tree<pair<int, int>, null_type, less<pair<int, int>>, rb_tree_tag, tree_order_statistics_node_update > pbds; // find_by_order, order_of_key
 
 #ifndef ONLINE_JUDGE
-#define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
+#define debug(x) cerr << #x <<" "; _print(x); cerr << endl; 
 #else
 #define debug(x)
 #endif

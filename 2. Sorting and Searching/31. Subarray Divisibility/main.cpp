@@ -44,12 +44,12 @@ void solve() {
     cin >> a;
 
     unordered_map<int, int> count;
-    count[0] = 1;  // base case for subarrays starting at index 0
+    count[0] = 1;
 
     long long sum = 0, ans = 0;
     for (int i = 0; i < n; i++) {
         sum += a[i];
-        int mod = ((sum % n) + n) % n;  // ensure non-negative mod
+        int mod = ((sum % n) + n) % n;  
         ans += count[mod];
         count[mod]++;
     }

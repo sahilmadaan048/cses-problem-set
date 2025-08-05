@@ -55,8 +55,6 @@ void solve(){
 
     sort(tasks.begin(), tasks.end());
 
-
-
     //  cal d - f (f is the finisn toime)
 
     ll currentTime = 0;

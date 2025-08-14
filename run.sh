@@ -1,9 +1,8 @@
-#!/bin/bash
 shopt -s autocd        # allows changing directories by typing folder name
 shopt -s globstar       # enables ** recursion if needed
 
+# Ask for folder relative to current directory
 while true; do
-    # Ask for folder relative to current directory
     read -e -p "Enter folder (Tab for autocomplete, or '.' for current folder): " folder
     if [ -d "$folder" ]; then
         break
@@ -38,7 +37,6 @@ fi
 # Run executable
 echo "Running $exe..."
 "./$exe"
-
 
 
 # just do ./run.sh

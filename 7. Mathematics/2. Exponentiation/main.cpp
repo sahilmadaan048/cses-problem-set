@@ -67,4 +67,15 @@ int32_t main()
     return 0;
 }
 
+    /*
     
+    
+    We will solve this recusively. If we want to find ax
+, we can do that by splitting into ax2.ax2
+ if x
+ is even, or ax−12∗ax−12∗a
+ if x
+ is odd. Complexity is O(n∗log(max(b))
+.
+    
+    */

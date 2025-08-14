@@ -38,3 +38,7 @@ fi
 # Run executable
 echo "Running $exe..."
 "./$exe"
+
+
+
+# just do ./run.sh

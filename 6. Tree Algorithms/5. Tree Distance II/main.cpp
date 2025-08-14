@@ -1,63 +1,86 @@
-// author - sahilmadaan048
-// https://cses.fi/problemset/task/1133/
+// Author - sahilmadaan048
 
-//Read the Internal solution, this is just another implementation of the solution.
-//Basically, you will need to know the sum of distances from an arbitrary node and sum it to get the answer for that node, but doing this for every node is n^2 which is not an acceptable solution, instead do this for one node and then notice that the answer for all it's neighbour can be calculated by adding a N - subtreesize(child node) [account for the increase in distances from all the other nodes than the ones in the subtree of the child and also subtracting another subtreesize(child node) since each node in this child subtree is now one step closer than the previous node.
-//Build two dfs'es one to calculate the size of subtrees (and simultaneously measuring distances from the node) and another to do measure the distance sum changes as we move from a node to it's neighbour.
-#include <bits/stdc++.h>
-
+#include "bits/stdc++.h"
+#define int long long
+#define uint unsigned long long
+#define vi vector<int>
+#define vvi vector<vi >
+#define vb vector<bool>
+#define vvb vector<vb >
+#define fr(i,n) for(int i=0; i<(n); i++)
+#define rep(i,a,n) for(int i=(a); i<=(n); i++)
+#define nl cout<<"\n"
+#define dbg(var) cout<<#var<<"="<<var<<" "
+#define all(v) v.begin(),v.end()
+#define sz(v) (int)(v.size())
+#define srt(v)  sort(v.begin(),v.end())         // sort 
+#define mxe(v)  *max_element(v.begin(),v.end())     // find max element in vector
+#define mne(v)  *min_element(v.begin(),v.end())     // find min element in vector
+#define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())));
+// make sure to sort before applying unique // else only consecutive duplicates would be removed 
+#define bin(x,y)  bitset<y>(x) 
 using namespace std;
-using i64 = long long;
+int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
-#define UNSYNC ios::sync_with_stdio(false); cin.tie(nullptr);
-#define sci(x) static_cast<int>(x)
-#define all(x) x.begin(), x.end()
-#define rep(i, ini, x) for (int i = ini; i < x; ++i)
-#define per(i, fin, x) for (int i = fin; i >= x; --i)
-#define VI vector<i64>
-#define VVI vector<vector<i64>>
 
-const int SZ = 200000;
+void modadd(int &a , int b) {a=((a%MOD)+(b%MOD))%MOD;}
+void modsub(int &a , int b) {a=((a%MOD)-(b%MOD)+MOD)%MOD;}
+void modmul(int &a , int b) {a=((a%MOD)*(b%MOD))%MOD;}
+// ================================== take ip/op like vector,pairs directly!==================================
+template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
+template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
+template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
+// ===================================END Of the input module ==========================================
 
-int N; 
-VI tree[SZ];
-int dist[SZ];
-int subtree[SZ];
 
-int dfs(int c, int p, int depth){
-    dist[c] = depth;
-    subtree[c] = 1;
-    for (int u: tree[c]){
-        if (u == p) continue; 
-        subtree[c] += dfs(u, c, depth + 1);
-    }
-    return subtree[c];
+
+const int N = 2e5  + 7;
+vector<int> g[N];
+int maxDistance;
+
+
+void dfs(int u, int parent, int dist) {
+  
 }
 
-i64 ans[SZ];
-void printRec(int c, int p){
-    for (int u: tree[c]){
-        if (u == p) continue;
-        ans[u] = ans[c] + N - 2LL*subtree[u];
-        printRec(u, c);
-    }
-    return;
+
+void solve(){
+
+  int n; cin >> n;
+
+  int a, b;
+
+  for(int i=0; i<n-1; i++) {
+    cin >> a >> b;
+
+    g[a].push_back(b);
+    g[b].push_back(a);
+
+  }
+
+  vector<int> ans(n);
+  for(int i=0; i<n; i++) {
+    cout << ans[i] << " ";
+
+  }
+
+  cout << endl;
+
+  return;
 }
 
-int main()
+int32_t main()
 {
-    UNSYNC
-    cin >> N;
-    rep(i, 0, N - 1){
-        int a, b; cin >> a >> b; --a, --b;
-        tree[a].push_back(b);
-        tree[b].push_back(a);
-    }
-    dfs(0, -1, 0);
-    ans[0] = accumulate(dist, dist + SZ, 0LL);
-    printRec(0, -1);
 
-    rep(i, 0, N) cout << ans[i] << ' ';
-    cout << '\n';
-    return 0;
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
+
+ int T = 1;
+ while (T--)
+ {
+   solve();
+ }
+ return 0;
 }

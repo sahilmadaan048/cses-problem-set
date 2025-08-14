@@ -1,0 +1,23 @@
+prefix sum wala kaam
+
+but update then sum
+then update then sum
+..
+..
+
+
+in worst case => o(q * n)
+
+
+fenwick tree helps in update and sum in Log (n)
+a bit compromised in sum but update optimised so much
+
+
+
+
+https://codeforces.com/blog/entry/61364
+
+
+https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees
+
+ 

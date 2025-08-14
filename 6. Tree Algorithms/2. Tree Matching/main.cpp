@@ -3,7 +3,7 @@ using namespace std;
 
 const int N = 2e5 + 5;
 vector<int> g[N];
-bool matched[N];  // matched[i] = true if node i is already matched
+bool matched[N];  
 int answer = 0;
 
 void dfs(int u, int parent) {
@@ -11,7 +11,6 @@ void dfs(int u, int parent) {
         if (v == parent) continue;
         dfs(v, u);
 
-        // Try to match u and v if both are unmatched
         if (!matched[u] && !matched[v]) {
             matched[u] = matched[v] = true;
             answer++;

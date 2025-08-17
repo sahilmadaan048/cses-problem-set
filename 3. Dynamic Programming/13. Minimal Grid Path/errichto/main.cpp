@@ -1,0 +1,144 @@
+// https://www.youtube.com/watch?v=eeMIXoU7avM
+
+// around 1:00
+
+
+/***
+ * 
+ * BRUTE FORCE approach 
+ * 
+ * minimal grid path - find lex smallest string in a grid
+ * 
+ * dp[i][j] = best string drm cell (i, j) tp the end
+ * 
+ * dp[i][j] = char[i][j] + min(dp[i+1][j]  ,  dp[i][j+1])
+ * 
+ * cout << dp[0][0]
+ * 
+ * this is o(n^3)
+ * pair<char, int>
+ * 
+ * looking at diagonal with k elements, sort those k pairs
+ *  
+ * 
+ */
+
+ #include "bits/stdc++.h"
+ #define int long long
+ #define uint unsigned long long
+ #define vi vector<int>
+ #define vvi vector<vi >
+ #define vb vector<bool>
+ #define vvb vector<vb >
+ #define fr(i,n) for(int i=0; i<(n); i++)
+ #define rep(i,a,n) for(int i=(a); i<=(n); i++)
+ #define nl cout<<"\n"
+ #define dbg(var) cout<<#var<<"="<<var<<" "
+ #define all(v) v.begin(),v.end()
+ #define sz(v) (int)(v.size())
+ #define srt(v)  sort(v.begin(),v.end())         // sort 
+ #define mxe(v)  *max_element(v.begin(),v.end())     // find max element in vector
+ #define mne(v)  *min_element(v.begin(),v.end())     // find min element in vector
+ #define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())));
+ // make sure to sort before applying unique // else only consecutive duplicates would be removed 
+ #define bin(x,y)  bitset<y>(x) 
+ using namespace std;
+ int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
+ 
+ 
+ 
+ void modadd(int &a , int b) {a=((a%MOD)+(b%MOD))%MOD;}
+ void modsub(int &a , int b) {a=((a%MOD)-(b%MOD)+MOD)%MOD;}
+ void modmul(int &a , int b) {a=((a%MOD)*(b%MOD))%MOD;}
+ // ================================== take ip/op like vector,pairs directly!==================================
+ template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
+ template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
+ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
+ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
+ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
+ // ===================================END Of the input module ==========================================
+ 
+const int INF = 1e9+5;
+
+ 
+ void solve(){
+ 
+    int n; cin >> n;
+
+    vector<string> a(n);
+
+    for(int i=0; i<n; i++) {
+        cin >> a[i];
+    }
+    
+    vector<vector<int>> hash(n+1, vector<int>(n+1, INF));
+
+    for(int diag = 2*n-2; diag>=0; diag--) {
+        vector<pair<int, int>> v;
+
+        for(int row =0; row<n; row++) {
+            // row + col == diag 
+            int col = diag - row;
+            if(0 <= col && col < n) {
+                v.emplace_back(row, col);
+            }
+        }
+
+        int k =  v.size();
+
+        vector<pair<pair<char, int>, pair<int, int>>> order; // coordinate compression
+        for(int i=0; i<k; i++) {
+            auto [row, col] = v[i];
+            pair<char, int> state = make_pair(a[row][col] , min(hash[row+1][col], hash[row][col+1]));
+            order.emplace_back(state, make_pair(row,  col));
+        }
+        sort(order.begin(), order.end());
+        int nxt = 0;
+        for(int i=0; i<k;i++) {
+            if(i == 0 || order[i].first != order[i-1].first) {
+                nxt++;
+            }
+            auto [row, col] = order[i].second;
+            hash[row][col] = nxt;
+        }
+    }
+
+    int row = 0, col = 0;
+    cout << a[row][col]; 
+
+    while(row < n-1 || col < n-1) {
+        if(row == n-1) col++;
+        else if(col == n-1) row++;
+        else if(hash[row + 1][col] < hash[row][col+1]) {
+            row++;
+        }
+        else {
+            col++;
+        }
+        cout << a[row][col];
+    }
+    cout << "\n";
+}
+ 
+ int32_t main()
+ {
+  
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+ 
+     int T = 1;
+     while (T--)
+     {
+         solve();
+     }
+     return 0;
+ }
+ 
+     
+
+
+ /*
+ 
+ TC her is O(N^2 log n)
+ 
+ */

@@ -6,7 +6,7 @@
       "type": "shell",
       "command": "g++ -std=c++17 -o \"${fileBasenameNoExtension}\" \"${file}\" && ./\"${fileBasenameNoExtension}\" < input.txt > output.txt",
       "options": {
-        "cwd": "${fileDirname}"    // 🟢 run inside the folder containing your .cpp file
+        "cwd": "${fileDirname}"
       },
       "group": {
         "kind": "build",
@@ -15,6 +15,15 @@
       "presentation": {
         "reveal": "always",
         "panel": "shared"
+      }
+    },
+    {
+      "label": "Create C++ Setup",
+      "type": "shell",
+      "command": "python",
+      "args": ["${workspaceFolder}/.vscode/create_cpp_setup.py"],
+      "presentation": {
+        "reveal": "always"
       }
     }
   ]

@@ -62,10 +62,9 @@ int main(){
 	int inversion_ct = 0;
 	for(int i = 1; i<= n; ++i){
 		inversion_ct += (sum(N-5) - sum(a[i]));
-		update(a[i], 1);
+		update(a[i], 1);  // adds 1 to index a[i]
 	}
 
 	cout << inversion_ct << endl;
-
 
 }

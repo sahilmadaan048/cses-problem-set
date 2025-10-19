@@ -1,0 +1,8 @@
+💡 Step 4: The difference
+
+Now,
+
+“Number of elements processed so far” − “Number of elements ≤ a[i]”
+= Number of previous elements greater than a[i]
+
+And those are exactly the inversions that a[i] participates in!

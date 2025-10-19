@@ -106,4 +106,6 @@ int main() {
  It used Fenwick Trees so next time touch it only when i am done with 
  topics like segment trees, fenwick trees, sparse table etc
 
+ this is wrong for the given problem
+
 */

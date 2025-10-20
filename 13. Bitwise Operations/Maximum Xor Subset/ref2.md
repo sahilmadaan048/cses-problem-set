@@ -16,16 +16,16 @@ We can pick `{2, 4, 5}` → `2 ^ 4 ^ 5 = 7` (maximum possible).
 
 ## 🧠 Why the Trie Approach Doesn’t Work Here
 
-In the **subarray problem**, XORs have a *prefix structure*:
+In the **subarray problem**, XORs have a _prefix structure_:
 `subarray(l, r) = pref[r] ^ pref[l-1]`
 
 That’s why a trie works — you’re always comparing **prefix XORs** (which are cumulative and ordered).
 
 But here:
 
-* There’s **no order** or **prefix structure**.
-* Subset elements can come from anywhere.
-* You can’t define “prefixes” when the subset isn’t contiguous.
+- There’s **no order** or **prefix structure**.
+- Subset elements can come from anywhere.
+- You can’t define “prefixes” when the subset isn’t contiguous.
 
 So the trie (which depends on inserting cumulative XORs one by one) **can’t represent arbitrary combinations** of elements.
 
@@ -84,10 +84,10 @@ const int BITS = 63;
 vector<int> basis(BITS + 1, 0);
 ```
 
-* We will treat each number as a 64-bit vector of bits.
-* `basis[i]` will store a number whose **highest set bit** is at position `i`.
+- We will treat each number as a 64-bit vector of bits.
+- `basis[i]` will store a number whose **highest set bit** is at position `i`.
 
-  * Think of it like a "pivot" in Gaussian elimination — it defines one independent direction.
+  - Think of it like a "pivot" in Gaussian elimination — it defines one independent direction.
 
 Example:
 
@@ -127,8 +127,8 @@ This ensures we build the basis in decreasing bit order — just like how you ha
 if (!(x & (1LL << i))) continue;
 ```
 
-* If the bit `i` is **not set** in `x`, skip it.
-* We only care about bits that are `1`.
+- If the bit `i` is **not set** in `x`, skip it.
+- We only care about bits that are `1`.
 
 ---
 
@@ -141,10 +141,10 @@ if (!basis[i]) {
 }
 ```
 
-* If there’s **no existing basis element** that has its highest bit at `i`,
+- If there’s **no existing basis element** that has its highest bit at `i`,
   then `x` becomes the new basis for that bit.
-* We store it and stop reducing further.
-* (Like adding a new independent vector to your set in linear algebra.)
+- We store it and stop reducing further.
+- (Like adding a new independent vector to your set in linear algebra.)
 
 ---
 
@@ -154,9 +154,9 @@ if (!basis[i]) {
 x ^= basis[i];
 ```
 
-* Otherwise, if there **is** already a basis element at this bit,
+- Otherwise, if there **is** already a basis element at this bit,
   we XOR it with `x` to eliminate that bit (set it to 0).
-* This is analogous to “subtracting” one row from another in Gaussian elimination to reduce it.
+- This is analogous to “subtracting” one row from another in Gaussian elimination to reduce it.
 
 We keep doing this until either `x` becomes 0 (completely reducible) or adds a new independent element.
 
@@ -196,9 +196,9 @@ for (int i = BITS; i >= 0; i--) {
 
 Now we build the **maximum possible XOR** using the basis elements.
 
-* Start with `ans = 0`.
-* For each basis element, check if XORing it increases `ans`.
-* If yes, include it (`ans ^= basis[i]`).
+- Start with `ans = 0`.
+- For each basis element, check if XORing it increases `ans`.
+- If yes, include it (`ans ^= basis[i]`).
 
 We go from **high bits to low bits**, ensuring that we greedily maximize the XOR result.
 
@@ -257,9 +257,9 @@ Try basis[0]: ans = max(6, 6^1=7) = 7
 | Reason                                              | Explanation                                                                                                                     |
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | **Trie depends on order**                           | It builds on cumulative prefixes (subarray context). Subset XORs have no prefixes.                                              |
-| **Trie compares two XOR values**                    | Subset XOR requires *any combination* of numbers, not pairwise XOR.                                                             |
+| **Trie compares two XOR values**                    | Subset XOR requires _any combination_ of numbers, not pairwise XOR.                                                             |
 | **Subset XOR is like a linear combination problem** | You can “combine” numbers with XOR in arbitrary ways — this is better represented by linear algebra (basis), not a binary tree. |
-| **Trie stores elements directly**                   | Basis stores only *independent* elements — a minimal representation of all possible XOR results.                                |
+| **Trie stores elements directly**                   | Basis stores only _independent_ elements — a minimal representation of all possible XOR results.                                |
 
 ---
 
@@ -267,10 +267,10 @@ Try basis[0]: ans = max(6, 6^1=7) = 7
 
 | Concept                        | Subarray XOR | Subset XOR |
 | ------------------------------ | ------------ | ---------- |
-| Prefix XORs like checkpoints   | ✅            | ❌          |
-| Binary Trie for pair XORs      | ✅            | ❌          |
-| Gaussian elimination over bits | ❌            | ✅          |
-| Order matters                  | ✅            | ❌          |
+| Prefix XORs like checkpoints   | ✅           | ❌         |
+| Binary Trie for pair XORs      | ✅           | ❌         |
+| Gaussian elimination over bits | ❌           | ✅         |
+| Order matters                  | ✅           | ❌         |
 
 ---
 

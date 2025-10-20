@@ -1,57 +1,57 @@
-#include<bits/stdc++.h>
-
+#include "bits/stdc++.h"
+#define int long long
+#define uint unsigned long long
+#define vi vector<int>
+#define vvi vector<vi >
+#define vb vector<bool>
+#define vvb vector<vb >
+#define fr(i,n) for(int i=0; i<(n); i++)
+#define rep(i,a,n) for(int i=(a); i<=(n); i++)
+#define nl cout<<"\n"
+#define dbg(var) cout<<#var<<"="<<var<<" "
+#define all(v) v.begin(),v.end()
+#define sz(v) (int)(v.size())
+#define srt(v)  sort(v.begin(),v.end())         // sort 
+#define mxe(v)  *max_element(v.begin(),v.end())     // find max element in vector
+#define mne(v)  *min_element(v.begin(),v.end())     // find min element in vector
+#define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())));
+// make sure to sort before applying unique // else only consecutive duplicates would be removed 
+#define bin(x,y)  bitset<y>(x) 
 using namespace std;
+int MOD=1e9+7;      // Hardcoded, directly change from here for functions!
 
 
 
-#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define MOD 1000000007
-#define MOD1 998244353
-#define INF 1e18
-#define nline "\n"
-#define pb push_back
-#define ppb pop_back
-#define mp make_pair
-#define ff first
-#define ss second
-#define PI 3.141592653589793238462
-#define set_bits __builtin_popcountll
-#define sz(x) ((int)(x).size())
-#define all(x) (x).begin(), (x).end()
+void modadd(int &a , int b) {a=((a%MOD)+(b%MOD))%MOD;}
+void modsub(int &a , int b) {a=((a%MOD)-(b%MOD)+MOD)%MOD;}
+void modmul(int &a , int b) {a=((a%MOD)*(b%MOD))%MOD;}
+// ================================== take ip/op like vector,pairs directly!==================================
+template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
+template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
+template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
+// ===================================END Of the input module ==========================================
 
-typedef long long ll;
-typedef unsigned long long ull;
-typedef long double lld;
-// typedef tree<pair<int, int>, null_type, less<pair<int, int>>, rb_tree_tag, tree_order_statistics_node_update > pbds; // find_by_order, order_of_key
 
-#ifndef ONLINE_JUDGE
-#define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
-#else
-#define debug(x)
-#endif
-
-void _print(ll t) {cerr << t;}
-void _print(int t) {cerr << t;}
-void _print(string t) {cerr << t;}
-void _print(char t) {cerr << t;}
-void _print(lld t) {cerr << t;}
-void _print(double t) {cerr << t;}
-void _print(ull t) {cerr << t;}
-
-template <class T, class V> void _print(pair <T, V> p);
-template <class T> void _print(vector <T> v);
-template <class T> void _print(set <T> v);
-template <class T, class V> void _print(map <T, V> v);
-template <class T> void _print(multiset <T> v);
-template <class T, class V> void _print(pair <T, V> p) {cerr << "{"; _print(p.ff); cerr << ","; _print(p.ss); cerr << "}";}
-template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
-template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
-template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
-template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
-
-int main() {
-#ifndef ONLINE_JUDGE
-    freopen("error.txt", "w", stderr);
-#endif
+void solve(){
+    cout << "sahil madaan";
     
 }
+
+int32_t main()
+{
+ 
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
+
+    int T = 1;
+    // cin >> T;
+    while (T--)
+    {
+        solve();
+    }
+    return 0;
+}
+
+    

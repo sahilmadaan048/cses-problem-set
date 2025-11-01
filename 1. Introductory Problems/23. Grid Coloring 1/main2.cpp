@@ -11,6 +11,7 @@ bool isValid(int i, int j, char c) {
     if (j > 0 && result[i][j - 1] == c) return false;
     return true;
 }
+// basically checks whether adjacent element is same -> if so return false, else return true
 
 bool solve() {
     result = grid;

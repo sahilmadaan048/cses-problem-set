@@ -56,6 +56,7 @@ void generate(string &s, int start, int n) {
     }
 }
 
+
 void solve(){
     string s; cin >> s;
     int n = s.size();

@@ -36,6 +36,7 @@ long long findDigit(long long int N)
         base *= 10;
         digits++;
     }
+    
     long long index = N % digits;
  
     // Calculate the number which contains the Nth digit

@@ -47,7 +47,6 @@ vector<string> generateGrayCode(int n) {
         string grayCode = bitset.to_string().substr(32 - n); // Get the n-bit Gray code string
         grayCodes.push_back(grayCode);
     }
- 
     return grayCodes;
 }
 

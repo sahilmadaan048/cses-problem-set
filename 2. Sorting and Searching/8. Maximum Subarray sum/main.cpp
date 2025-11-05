@@ -5,7 +5,10 @@
 using namespace std;
 #define ll long long
 #define fast ios_base::sync_with_stdio(false); cin.tie(0);
- 
+
+
+// we are using kadanes algorithm here
+// if the subarray sum becomes < 0 the maximum sum turns to 0 for the next subarray
 void solve() {
     int n;
     cin >> n;

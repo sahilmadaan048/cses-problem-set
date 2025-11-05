@@ -16,7 +16,7 @@ void solve() {
     positions.insert(x);
     segments.insert(x);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)     {
         int p;
         cin >> p;
 

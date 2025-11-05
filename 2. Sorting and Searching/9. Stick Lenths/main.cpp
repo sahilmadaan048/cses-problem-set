@@ -7,6 +7,9 @@ using namespace std;
 #define vi vector<int>
 #define fast ios_base::sync_with_stdio(false); cin.tie(0);
  
+// again greedy method suubtracted from the median value
+// will give the minimum total cost
+
 void solve(){
     int n; cin >> n;
     vi temp(n);

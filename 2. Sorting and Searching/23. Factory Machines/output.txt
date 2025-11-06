@@ -1,0 +1,39 @@
+// https://cses.fi/problemset/task/1620
+ 
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n;
+    long long t;
+    cin >> n >> t;
+    vector<long long> temp(n);
+    for (int i = 0; i < n; i++) {
+        cin >> temp[i];
+    }
+ 
+    // Binary search on time
+    long long lo = 1, hi = 1e18;
+    long long ans = hi;
+ 
+    while (lo <= hi) {
+        long long mid = lo + (hi - lo) / 2;
+ 
+        // Calculate the number of products that can be made in 'mid' time
+        long long total_products = 0;
+        for (int i = 0; i < n; i++) {
+            total_products += mid / temp[i];
+            if (total_products >= t) break;  // No need to continue if we already reach t
+        }
+ 
+        if (total_products >= t) {
+            ans = mid;  // Possible to produce t products in 'mid' time
+            hi = mid - 1;
+        } else {
+            lo = mid + 1;
+        }
+    }
+ 
+    cout << ans << endl;
+    return 0;
+}

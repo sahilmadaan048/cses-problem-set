@@ -34,7 +34,7 @@ ll f(ll n, ll k)
 
     ll temp = f(n/2, k - (n+1)/2);
 
-    if(n%2 == 1) {
+        if(n%2 == 1) {
         return 2*temp + 1;
     }
 
@@ -52,9 +52,6 @@ int main()
     int n, k;
     while(q--) {
         cin >> n >> k;
-
         cout << f(n, k) << endl;
-
-
     }
 }

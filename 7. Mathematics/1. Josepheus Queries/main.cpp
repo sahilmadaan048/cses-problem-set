@@ -26,7 +26,7 @@ ll f(ll n, ll k)
         return 1;
 
     if(k <= (n+1)/2) {
-        if(2*k > n) {
+        if(2*k > n) {   
             return (2 * k) % n;
         }
         else return 2*k;

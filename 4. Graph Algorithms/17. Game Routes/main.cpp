@@ -38,8 +38,6 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 const int MAXN = 100001;
 const long long MOD = 1000000007;
 
-
-
 void solve() {
     int N, M;
     cin >> N >> M;
@@ -51,7 +49,7 @@ void solve() {
     for (int i = 0; i < M; i++) {
         int a, b;
         cin >> a >> b;
-        graph[a].push_back(b);
+        graph[a].push_back(b);g
         indegree[b]++;
     }
 

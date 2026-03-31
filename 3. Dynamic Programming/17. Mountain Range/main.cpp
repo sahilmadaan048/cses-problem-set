@@ -30,3 +30,12 @@ int main() {
     cout << longestDecreasingSubsequence(h) << "\n";
     return 0;
 }
+
+
+/*
+
+ this approach is just wrong since we dont necessarily have to look for a decrerassing segment in the array of max llength
+
+ 
+
+*/

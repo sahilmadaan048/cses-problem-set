@@ -13,7 +13,7 @@
 #define rep(i,a,n) for(int i=(a); i<=(n); i++)
 #define nl cout<<"\n"
 #define dbg(var) cout<<#var<<"="<<var<<" "
-#define all(v) v.begin(),v.end()
+#define all(v) v.begin(),v.en   
 #define sz(v) (int)(v.size())
 #define srt(v)  sort(v.begin(),v.end())         // sort 
 #define mxe(v)  *max_element(v.begin(),v.end())     // find max element in vector
@@ -37,6 +37,32 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
+int getMinTrips(int n, int x, vector<int> w) {
+  int limit = 1 << n;
+  vector<pair<int,int>> dp(limit, {n + 1, 0});
+  dp[0] = {1, 0};
+
+  for (int s=1; s < limit; s++) {
+    for (int person=0; person < n; person++) {
+      if (s & (1 << person)) {
+        pair<int, int> optimum = dp[s ^ (1 << person)];
+
+        if (optimum.second + w[person] <= x) {
+          optimum.second += w[person];
+        }
+        else {
+          optimum.first += 1;
+          optimum.second = w[person];
+        }
+
+        dp[s] = min(dp[s], optimum);
+      }
+    }
+  }
+
+  return dp[limit - 1].first;
+}
+
 
 void solve(){
 
@@ -47,26 +73,20 @@ void solve(){
     for(int i=0; i<n; i++) {
         cin >> temp[i];
     }
-
-    // find rhe start 
-
-    
-
+    cout << getMinTrips(n, x, temp) << endl;
 }
 
 int32_t main()
 {
- 
+
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
 
-    int T = 1;
-    cin >> T;
-    while (T--)
-    {
-        solve();
-    }
-    return 0;
+ int T = 1;
+ while (T--)
+ {
+    solve();
+}
+return 0;
 }
 
-    

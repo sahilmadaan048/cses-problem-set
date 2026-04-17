@@ -155,3 +155,31 @@ int32_t main()
 
 // .**
 // *..
+
+
+/*
+
+
+
+| Problem Type             | Data Structure |
+| ------------------------ | -------------- |
+| Static range sum (1D)    | Prefix sum     |
+| Static range sum (2D)    | 2D prefix      |
+| Point update + range sum | Fenwick        |
+| Range update + range sum | Lazy segtree   |
+| Rectangle sum + updates  | 2D Fenwick     |
+
+
+
+
+
+Final Complexity Summary
+
+Time Complexity:
+=> O(n²) + O(n²) + O(q)
+=> O(n² + q)
+
+Space Complexity:
+=> O(n²)
+
+*/

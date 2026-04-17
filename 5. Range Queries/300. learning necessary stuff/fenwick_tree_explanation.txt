@@ -1,0 +1,99 @@
+FENWICK TREE (BINARY INDEXED TREE)
+
+GOAL: We want to support: 1) Range Update 2) Point Query
+
+Instead of updating every element in range [a, b], we use a trick.
+
+------------------------------------------------------------------------
+
+DIFFERENCE ARRAY IDEA
+
+To add value ‘u’ to all elements in range [a, b]:
+
+    diff[a] += u
+    diff[b+1] -= u
+
+Then the real value at index k becomes:
+
+    arr[k] + prefix_sum(diff up to k)
+
+We use a Fenwick Tree to maintain this prefix sum efficiently.
+
+------------------------------------------------------------------------
+
+FENWICK TREE STRUCTURE
+
+Each index stores partial prefix sums. Core operation:
+
+    idx & -idx
+
+This gives the last set bit of idx. It tells how much range that index
+is responsible for.
+
+Example: idx = 12 (1100 in binary) idx & -idx = 4 (0100)
+
+------------------------------------------------------------------------
+
+UPDATE OPERATION
+
+void update(int idx, long long val) { for (; idx <= n; idx += idx &
+-idx) bit[idx] += val; }
+
+Why it works: It updates all Fenwick nodes that include this index.
+
+------------------------------------------------------------------------
+
+QUERY OPERATION
+
+long long query(int idx) { long long sum = 0; for (; idx > 0; idx -= idx
+& -idx) sum += bit[idx]; return sum; }
+
+Why it works: It collects prefix blocks until reaching 0.
+
+------------------------------------------------------------------------
+
+RANGE UPDATE + POINT QUERY LOGIC
+
+For type 1 query (add u to range [a, b]):
+
+    ft.update(a, u);
+    ft.update(b+1, -u);
+
+This starts adding u at index a and stops adding u after index b.
+
+For type 2 query (value at k):
+
+    arr[k] + ft.query(k)
+
+ft.query(k) gives total increment affecting index k.
+
+------------------------------------------------------------------------
+
+EXAMPLE
+
+Initial array: 10 20 30 40 50
+
+Query: Add 5 to range [2, 4]
+
+We perform: update(2, +5) update(5, -5)
+
+Prefix sums of diff:
+
+Index 1 -> 0 Index 2 -> 5 Index 3 -> 5 Index 4 -> 5 Index 5 -> 0
+
+Final values: 10 25 35 45 50
+
+------------------------------------------------------------------------
+
+TIME COMPLEXITY
+
+Update: O(log n) Query : O(log n)
+
+Total: O(q log n)
+
+------------------------------------------------------------------------
+
+MENTAL MODEL
+
+Fenwick Tree stores how much extra should be added to each position due
+to all previous range updates.

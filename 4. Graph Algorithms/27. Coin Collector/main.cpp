@@ -60,7 +60,7 @@ vector<int> scc_sum;
 
 void dfs1(int u)  {
     visited[u] = true;
-
+    
     for(auto &v: adj[u]) {
         if(!visited[v]) {
             dfs1(v);

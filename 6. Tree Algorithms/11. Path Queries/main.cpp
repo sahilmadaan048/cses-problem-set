@@ -54,7 +54,7 @@ void update(int i, int v) {
    }
 }
 
-int query(int i) {
+int query(int i) {   
    int s = 0;
    for(; i > 0 ; i -= i & -i) {
       s += bit[i];

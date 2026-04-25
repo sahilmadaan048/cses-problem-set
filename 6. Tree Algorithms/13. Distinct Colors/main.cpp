@@ -1,3 +1,5 @@
+// https://cses.fi/problemset/task/1139
+
 // Author - sahilmadaan048
 
 #include "bits/stdc++.h"
@@ -35,19 +37,63 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(){
+
+const int N = 200005;
+
+int n;
+vector<int> adj[N];
+int color[N];
+int ans[N];
+
+set<int>* dfs(int node, int parent) {
+ set<int>* cur = new set<int>();
+ cur->insert(color[node]);
+
+ for (int child : adj[node]) {
+  if (child == parent) continue;
+
+  set<int>* childSet = dfs(child, node);
+
+        // small to large merging
+  if (cur->size() < childSet->size())
+   swap(cur, childSet);
+
+for (int c : *childSet)
+   cur->insert(c);
 }
 
-int32_t main()
-{
- 
- ios_base::sync_with_stdio(false);
+ans[node] = cur->size();
+return cur;
+}
+
+
+void solve() {
+   cin >> n;
+
+   for (int i = 1; i <= n; i++)
+     cin >> color[i];
+
+  for (int i = 0; i < n - 1; i++) {
+     int a, b;
+     cin >> a >> b;
+     adj[a].push_back(b);
+     adj[b].push_back(a);
+  }
+
+  dfs(1, 0);
+
+  for (int i = 1; i <= n; i++)
+     cout << ans[i] << " ";
+
+}
+
+int32_t main() {
+ ios::sync_with_stdio(false);
  cin.tie(NULL);
 
-    int T = 1;
-    while (T--)
-    {
-        solve();
-    }
-    return 0;
+ int t=1;
+
+ while(t--) {
+   solve();
+}
 }

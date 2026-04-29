@@ -1,7 +1,4 @@
-// https://cses.fi/problemset/task/1110
 // Author - sahilmadaan048
-
-// ACCEPTED SOLUTION (Booths Algorithm)
 
 #include "bits/stdc++.h"
 #define int long long
@@ -39,54 +36,18 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-   string s; cin >> s;  
-
-   s += s;
-   int n = s.size();
-
-   int i = 0, j = 1, k = 0;
-
-   while (i < n/2 && j < n/2) {
-    k = 0;
-    while (k < n/2 && s[i + k] == s[j + k]) {
-      k++;
-   }
-
-   if (k >= n/2) {
-      break;
-   }
-
-   if (s[i + k] > s[j + k]) {
-      i = i + k + 1;
-      if (i == j) {
-         i++;
-      } 
-   } 
-   else {
-      j = j + k + 1;
-
-      if (i == j)  {
-         j++;
-      }
-   }
-}
-
-int start = min(i, j);
-cout << s.substr(start, n/2) << "\n";
-
-return;
 }
 
 int32_t main()
 {
+ 
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
 
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-
-  int T = 1;
-  while (T--)
-  {
-    solve();
- }
- return 0;
+    int T = 1;
+    while (T--)
+    {
+        solve();
+    }
+    return 0;
 }

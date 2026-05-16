@@ -1,4 +1,3 @@
-// https://cses.fi/problemset/task/2193
 // Author - sahilmadaan048
 
 #include "bits/stdc++.h"
@@ -37,48 +36,18 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-
-   // number of lattice points inside the polygon
-   // number of lattice points on the boundary
-
-  int n;
-  cin >> n;
-
-  vector<pair<int,int>> p(n);
-  for(int i = 0; i < n; i++) {
-    cin >> p[i].first >> p[i].second;
- }
-
- int area2 = 0;
- int b = 0;
-
- for(int i = 0; i < n; i++) {
-    int x1 = p[i].first;
-    int y1 = p[i].second;
-    int x2 = p[(i+1)%n].first;
-    int y2 = p[(i+1)%n].second;
-
-    area2 += x1*y2 - x2*y1;
-    b += __gcd(llabs(x2-x1), llabs(y2-y1));
- }
-
- area2 = llabs(area2);
-
- int in = (area2 - b + 2) / 2;
-
- cout << in << " " << b << "\n";
 }
 
 int32_t main()
 {
+ 
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
 
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-
-  int T = 1;
-  while (T--)
-  {
-    solve();
- }
- return 0;
+    int T = 1;
+    while (T--)
+    {
+        solve();
+    }
+    return 0;
 }

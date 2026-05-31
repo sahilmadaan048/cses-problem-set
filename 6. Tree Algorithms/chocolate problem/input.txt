@@ -1,0 +1,8 @@
+xyzxyzxyzxyz
+6
+2 1 12 x
+1 4 a
+2 1 6 x
+2 1 6 a
+1 12 a
+2 1 12 a

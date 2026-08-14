@@ -35,38 +35,66 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
+set<pair<int,int>> freq_set;
+map<int, int> freq_map;
+
+void add(int v) {
+    int freq = freq_map[v];
+
+    freq_set.erase({-freq, v});
+
+    freq_set.insert({-(freq + 1), v});
+    freq_map[v]++;
+}
+void remove(int v) {
+    int freq = freq_map[v];
+    
+    freq_set.erase({-freq, v});
+
+    if ( freq > 1 )
+        freq_set.insert({-(freq - 1), v});
+    freq_map[v]--;
+}
+
+int get() {
+    return freq_set.begin()->second;
+}
 
 void solve(){
     int n, k; cin >> n >> k;
 
-    vector<int> temp(n);
+    vector<int> a(n);
     
     for(int i =0; i<n; i++) {
-        cin >> temp[i];
+        cin >> a[i];
     }
 
-    unordered_map<int, int> mpp;
-
-    vector<int> ans;
-
     for(int i=0; i<k; i++) {
-        
-    }   
-    return;
+       add(a[i]);
+
+       // cout << freq_set.begin()->first << endl;
+   }   
+
+   cout << get() << " ";
+   for(int i = k; i < n; ++i) {
+    remove(a[i-k]);
+    add(a[i]);
+    cout << get() << " ";
+}
+return;
 }
 
 int32_t main()
 {
- 
+
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
 
-    int T = 1;
-    while (T--)
-    {
-        solve();
-    }
-    return 0;
+ int T = 1;
+ while (T--)
+ {
+    solve();
+}
+return 0;
 }
 
-    

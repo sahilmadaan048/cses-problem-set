@@ -1,4 +1,3 @@
-// https://cses.fi/problemset/task/2191
 // Author - sahilmadaan048
 
 #include "bits/stdc++.h"
@@ -34,33 +33,9 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pa
 template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
-int orientation(int x1, int y1,
-                int x2, int y2,
-                int x3, int y3)
-{
-    return (x2 - x1) * (y3 - y1)
-         - (y2 - y1) * (x3 - x1);
-}
+
 
 void solve(){
-    int n;
-    cin >> n;
-
-    vector<pair<int,int>> v(n);
-    for(int i = 0; i < n; i++)
-        cin >> v[i].first >> v[i].second;
-
-    long long area = 0;
-
-    for(int i = 1; i < n-1; i++){
-        area += orientation(
-            v[0].first, v[0].second,
-            v[i].first, v[i].second,
-            v[i+1].first, v[i+1].second
-        );
-    }
-
-    cout << abs(area) << "\n";
 }
 
 int32_t main()
@@ -76,8 +51,3 @@ int32_t main()
     }
     return 0;
 }
-
-
-
-
-z

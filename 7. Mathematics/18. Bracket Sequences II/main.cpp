@@ -120,7 +120,7 @@ void solve()
             return;
         }
     }
-
+ 
     int m = sz(s);
 
     if ((n - m + balance) & 1)
